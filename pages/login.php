@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <div class="login-box" style="margin: auto; padding: 10px;">
     <div class="card card-outline card-primary" style="margin-top: 55%;">
         <div class="card-header text-center">
@@ -42,6 +47,7 @@
 
             if($("input[name='username']").val() == 'admin' && $("input[name='password']").val() == '123') {
                 // Redirect to admin page
+                $('.content-wrapper').load('./pages/dashboard.php');
             } else {
                 Swal.fire({
                     icon: 'error',

@@ -56,7 +56,6 @@ session_start();
                     <span class="brand-text font-weight-light">GROUP I</span>
                 </a>
 
-                <?php if(isset($_SESSION['is_loggin']) && !empty($_SESSION['is_loggin'])) :?>
                 <!-- Sidebar -->
                 <div class="sidebar">
                     <!-- Sidebar Menu -->
@@ -71,10 +70,18 @@ session_start();
                                     <p>Dashboard</p>
                                 </a>
                             </li>
+
                             <li class="nav-item">
                                 <a id="crudform" href="#" class="nav-link">
                                     <i class="nav-icon fas fa-edit"></i>
                                     <p>CRUD Form</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a id="login" href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-sign-in-alt"></i>
+                                    <p>Login</p>
                                 </a>
                             </li>
                         </ul>
@@ -82,7 +89,6 @@ session_start();
                     <!-- /.sidebar-menu -->
                 </div>
                 <!-- /.sidebar -->
-                <?php endif; ?>
             </aside>
 
             <!-- Content Wrapper. Contains page content -->
@@ -138,25 +144,32 @@ session_start();
         <!-- Custom Script -->
         <script>
             $(function () {
+                $('.content-wrapper').load('./pages/crud.php');
+
                 $('#dashboard').click(function () {
                     $('.content-wrapper').load('./pages/dashboard.html');
                 });
+
                 $('#crudform').click(function () {
                     $('.content-wrapper').load('./pages/crud.php');
+                });
+
+                $('#login').click(function () {
+                    $('.content-wrapper').load('./pages/login.php');
                 });
             });
         </script>
 
         <?php
-        if(!isset($_SESSION['is_loggin']) && empty($_SESSION['is_loggin'])) {
-            echo "
-            <script>
-                $(document).ready(function() {
-                    $('.content-wrapper').load('./pages/login.php');
-                })
-            </script>
-            ";
-        }
+        // if(!isset($_SESSION['is_loggin']) && empty($_SESSION['is_loggin'])) {
+        //     echo "
+        //     <script>
+        //         $(document).ready(function() {
+        //             $('.content-wrapper').load('./pages/login.php');
+        //         })
+        //     </script>
+        //     ";
+        // }
 
         ?>
 
