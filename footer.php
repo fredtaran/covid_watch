@@ -1,3 +1,15 @@
+<!-- /.content-wrapper -->
+<footer class="main-footer">
+                &copy; <em>Copyright 2023. DICT Training. Web Development for Web Developer (Training for Trainers).</em>
+            </footer>
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Control sidebar content goes here -->
+            </aside>
+            <!-- /.control-sidebar -->
+        </div>
+        <!-- ./wrapper -->
+
 <!-- jQuery -->
 <script src="resources/plugins/jquery/jquery.min.js"></script>
         <!-- jQuery UI 1.11.4 -->
