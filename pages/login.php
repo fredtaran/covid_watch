@@ -56,7 +56,6 @@ if(isset($_SESSION['is_loggin']) && !empty($_SESSION['is_loggin'])) {
                         <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                     </form>
                 </div>
-
             </div>
         </div>
 
@@ -103,7 +102,7 @@ if(isset($_SESSION['is_loggin']) && !empty($_SESSION['is_loggin'])) {
                             success: function(data,textStatus,jqXHR){
                                 window.location = GLOBAL.url+'index.php';
                             },
-                            error: function(jqXHR,textStatus,errorThrown){
+                            error: function(jqXHR,textStatus,errorThrown){console.log(jqXHR)
                                 var response = jqXHR.responseJSON;
                                 Swal.fire({
                                     icon: 'error',
