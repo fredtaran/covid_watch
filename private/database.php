@@ -3,7 +3,7 @@
 class Database {
     protected $connection;
 
-    function __constructor() {
+    public function __construct() {
         $this->connection = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
         if($this->connection->connect_error) {
@@ -11,7 +11,7 @@ class Database {
         }
     }
 
-    function getConnection() {
+    public function getConnection() {
         return $this->connection;
     }
 }
