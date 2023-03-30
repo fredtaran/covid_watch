@@ -4,9 +4,11 @@ define('APP_PATH',$path.$_SERVER["SERVER_NAME"].'/covid_watch/');
 
 session_start();
 if(!isset($_SESSION['is_loggin']) || empty($_SESSION['is_loggin'])) {
-    header('Location: pages/login.php');
+    header('Location: '.APP_PATH.'pages/login.php');
     die();
 }
+$curPage = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);  
+$page = explode(".",$curPage)[0];
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +57,7 @@ if(!isset($_SESSION['is_loggin']) || empty($_SESSION['is_loggin'])) {
             <!-- Main Sidebar Container -->
             <aside class="main-sidebar sidebar-dark-primary elevation-4">
                 <!-- Brand Logo -->
-                <a href="index.html" class="brand-link">
+                <a href="<?php echo APP_PATH; ?>index.php" class="brand-link">
                     <img src="<?php echo APP_PATH; ?>resources/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                         style="opacity: 0.8" />
                     <span class="brand-text font-weight-light">GROUP I</span>
@@ -70,14 +72,14 @@ if(!isset($_SESSION['is_loggin']) || empty($_SESSION['is_loggin'])) {
                             <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
                             <li class="nav-item">
-                                <a id="dashboard" href="<?php echo APP_PATH; ?>pages/dashboard.php" class="nav-link">
+                                <a id="dashboard" href="<?php echo APP_PATH; ?>pages/dashboard.php" class="nav-link <?php echo ($page == 'dashboard'?'active':''); ?>">
                                     <i class="nav-icon fas fa-chart-bar"></i>
                                     <p>Dashboard</p>
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a id="crudform" href="#" class="nav-link">
+                                <a id="crudform" href="#" class="nav-link <?php echo ($page == 'crud'?'active':''); ?>">
                                     <i class="nav-icon fas fa-edit"></i>
                                     <p>CRUD Form</p>
                                 </a>

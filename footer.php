@@ -43,16 +43,8 @@
         <!-- SweetAlert2 -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <!-- Custom Script -->
-        <script>
-            $(function () {
-                $('#dashboard').click(function () {
-                    $('.content-wrapper').load('./pages/dashboard.html');
-                });
-                $('#crudform').click(function () {
-                    $('.content-wrapper').load('./pages/crud.php');
-                });
-            });
-        </script>
+        <script src="<?php echo APP_PATH; ?>js/global.js"></script>
+        <script src="<?php echo APP_PATH; ?>js/<?php echo $page; ?>.js"></script>
 
     </body>
 
