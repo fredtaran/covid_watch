@@ -84,9 +84,9 @@ if(!isset($_SESSION['is_loggin']) || empty($_SESSION['is_loggin'])) {
                             </li>
 
                             <li class="nav-item">
-                                <a id="login" href="#" class="nav-link">
+                                <a id="logout" href="<?php echo APP_PATH; ?>api/logout.php" class="nav-link">
                                     <i class="nav-icon fas fa-sign-in-alt"></i>
-                                    <p>Login</p>
+                                    <p>Logout</p>
                                 </a>
                             </li>
                         </ul>
