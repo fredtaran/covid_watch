@@ -1,15 +1,12 @@
 <?php
-require_once "config.php";
+session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>COVID WATCH 2023 | WEB DEV TOT</title>
-
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
@@ -32,7 +29,6 @@ require_once "config.php";
         <!-- summernote -->
         <link rel="stylesheet" href="resources/plugins/summernote/summernote-bs4.min.css" />
     </head>
-
     <body class="hold-transition sidebar-mini layout-fixed">
         <div class="wrapper">
             <!-- Navbar -->
@@ -45,7 +41,6 @@ require_once "config.php";
                 </ul>
             </nav>
             <!-- /.navbar -->
-
             <!-- Main Sidebar Container -->
             <aside class="main-sidebar sidebar-dark-primary elevation-4">
                 <!-- Brand Logo -->
@@ -55,7 +50,6 @@ require_once "config.php";
                     <span class="brand-text font-weight-light">GROUP I</span>
                 </a>
 
-                <?php if(isset($_SESSION['is_loggin']) && !empty($_SESSION['is_loggin'])) :?>
                 <!-- Sidebar -->
                 <div class="sidebar">
                     <!-- Sidebar Menu -->
@@ -70,10 +64,18 @@ require_once "config.php";
                                     <p>Dashboard</p>
                                 </a>
                             </li>
+
                             <li class="nav-item">
                                 <a id="crudform" href="#" class="nav-link">
                                     <i class="nav-icon fas fa-edit"></i>
                                     <p>CRUD Form</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a id="login" href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-sign-in-alt"></i>
+                                    <p>Login</p>
                                 </a>
                             </li>
                         </ul>
@@ -81,19 +83,16 @@ require_once "config.php";
                     <!-- /.sidebar-menu -->
                 </div>
                 <!-- /.sidebar -->
-                <?php endif; ?>
             </aside>
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- content goes here.. -->
-
             </div>
             <!-- /.content-wrapper -->
             <footer class="main-footer">
                 &copy; <em>Copyright 2023. DICT Training. Web Development for Web Developer (Training for Trainers).</em>
             </footer>
-
             <!-- Control Sidebar -->
             <aside class="control-sidebar control-sidebar-dark">
                 <!-- Control sidebar content goes here -->
@@ -101,7 +100,6 @@ require_once "config.php";
             <!-- /.control-sidebar -->
         </div>
         <!-- ./wrapper -->
-
         <!-- jQuery -->
         <script src="resources/plugins/jquery/jquery.min.js"></script>
         <!-- jQuery UI 1.11.4 -->
@@ -137,28 +135,34 @@ require_once "config.php";
         <!-- Custom Script -->
         <script>
             $(function () {
+                $('.content-wrapper').load('./pages/crud.php');
+
                 $('#dashboard').click(function () {
                     $('.content-wrapper').load('./pages/dashboard.html');
                 });
+
                 $('#crudform').click(function () {
                     $('.content-wrapper').load('./pages/crud.php');
+                });
+
+                $('#login').click(function () {
+                    $('.content-wrapper').load('./pages/login.php');
                 });
             });
         </script>
 
         <?php
-        if(!isset($_SESSION['is_loggin']) && empty($_SESSION['is_loggin'])) {
-            echo "
-            <script>
-                $(document).ready(function() {
-                    $('.content-wrapper').load('./pages/login.php');
-                })
-            </script>
-            ";
-        }
+        // if(!isset($_SESSION['is_loggin']) && empty($_SESSION['is_loggin'])) {
+        //     echo "
+        //     <script>
+        //         $(document).ready(function() {
+        //             $('.content-wrapper').load('./pages/login.php');
+        //         })
+        //     </script>
+        //     ";
+        // }
 
         ?>
 
     </body>
-
 </html>
