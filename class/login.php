@@ -10,12 +10,12 @@ class Login{
         $this->conn = $db;
     }
 
-    public function parseform(){
-        
+    public function parseform(){        
         //check if username is present
         $sql = "SELECT * FROM " . $this->table_name . " WHERE username = '" . $this->uname."' LIMIT 1";
         $result = $this->conn->query($sql);
         $this->conn->close();
+
         return $result;
         exit();
     }

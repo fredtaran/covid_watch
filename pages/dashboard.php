@@ -1,6 +1,5 @@
 <?php
 include_once '../header.php';
-
 ?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -41,7 +40,6 @@ include_once '../header.php';
         </div>
     </section>
 </div>
-
 <?php 
 include_once '../footer.php';
 ?>

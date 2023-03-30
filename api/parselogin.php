@@ -9,9 +9,9 @@ include_once '../private/config.php';
 include_once '../private/database.php';
 include_once '../class/login.php'; 
 
-$database = new Database;
-$db = $database->getConnection();
 
+$database = new Database();
+$db = $database->getConnection();
 
 $item = new Login($db);
 $item->uname = $_POST['username'];
