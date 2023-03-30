@@ -1,5 +1,9 @@
 <?php
-require_once "config.php";
+session_start();
+if(!isset($_SESSION['is_loggin']) || empty($_SESSION['is_loggin'])) {
+    header('Location: pages/login.php');
+    die();
+}
 ?>
 
 <!DOCTYPE html>
@@ -87,7 +91,7 @@ require_once "config.php";
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- content goes here.. -->
-
+                
             </div>
             <!-- /.content-wrapper -->
             <footer class="main-footer">
@@ -145,19 +149,6 @@ require_once "config.php";
                 });
             });
         </script>
-
-        <?php
-        if(!isset($_SESSION['is_loggin']) && empty($_SESSION['is_loggin'])) {
-            echo "
-            <script>
-                $(document).ready(function() {
-                    $('.content-wrapper').load('./pages/login.php');
-                })
-            </script>
-            ";
-        }
-
-        ?>
 
     </body>
 
