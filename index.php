@@ -31,26 +31,35 @@ include_once 'header.php';
                             data-accordion="false">
                             <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
-                            <li class="nav-item">
-                                <a id="dashboard" href="pages/dashboard.php" class="nav-link">
-                                    <i class="nav-icon fas fa-chart-bar"></i>
-                                    <p>Dashboard</p>
-                                </a>
-                            </li>
+                            <?php if(!isset($_SESSION['is_loggin']) || empty($_SESSION['is_loggin'])) : ?>
+                                <li class="nav-item">
+                                    <a id="login" href="#" class="nav-link">
+                                        <i class="nav-icon fas fa-sign-in-alt"></i>
+                                        <p>Login</p>
+                                    </a>
+                                </li>
 
-                            <li class="nav-item">
-                                <a id="crudform" href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-edit"></i>
-                                    <p>CRUD Form</p>
-                                </a>
-                            </li>
+                                <li class="nav-item">
+                                    <a id="crudform" href="#" class="nav-link">
+                                        <i class="nav-icon fas fa-edit"></i>
+                                        <p>Form</p>
+                                    </a>
+                                </li>
+                            <?php else : ?>
+                                <li class="nav-item">
+                                    <a id="dashboard" href="pages/dashboard.php" class="nav-link">
+                                        <i class="nav-icon fas fa-chart-bar"></i>
+                                        <p>Dashboard</p>
+                                    </a>
+                                </li>
 
-                            <li class="nav-item">
-                                <a id="login" href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-sign-in-alt"></i>
-                                    <p>Login</p>
-                                </a>
-                            </li>
+                                <li class="nav-item">
+                                    <a id="crudform" href="#" class="nav-link">
+                                        <i class="nav-icon fas fa-edit"></i>
+                                        <p>Form</p>
+                                    </a>
+                                </li>
+                            <?php endif; ?>
                         </ul>
                     </nav>
                     <!-- /.sidebar-menu -->

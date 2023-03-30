@@ -1,9 +1,5 @@
 <?php
 session_start();
-if(!isset($_SESSION['is_loggin']) || empty($_SESSION['is_loggin'])) {
-    header('Location: pages/login.php');
-    die();
-}
 ?>
 
 <!DOCTYPE html>

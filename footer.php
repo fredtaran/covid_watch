@@ -36,11 +36,25 @@
                 $('#dashboard').click(function () {
                     $('.content-wrapper').load('./pages/dashboard.html');
                 });
+
                 $('#crudform').click(function () {
                     $('.content-wrapper').load('./pages/crud.php');
                 });
             });
         </script>
+
+        <?php
+        if(!isset($_SESSION['is_loggin']) || empty($_SESSION['is_loggin'])) {
+            echo "
+            <script>
+            $('.content-wrapper').load('./pages/crud.php');
+            $('#login').click(function () {
+                $('.content-wrapper').load('./pages/login.php');
+            });
+            </script>
+            ";
+        }
+        ?>
 
     </body>
 
