@@ -9,6 +9,7 @@ include_once '../private/config.php';
 include_once '../private/database.php';
 include_once '../class/login.php'; 
 
+
 $database = new Database();
 $db = $database->getConnection();
 
@@ -29,7 +30,6 @@ if($result->num_rows > 0){
         session_start();
         $_SESSION["is_loggin"] = true;
         $_SESSION["username"] = $item->uname;
-        header('Location: ../index.php');
         http_response_code(200);
         echo json_encode("OK");
     }
