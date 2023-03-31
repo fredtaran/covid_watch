@@ -3,12 +3,14 @@ $path = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";
 define('APP_PATH',$path.$_SERVER["SERVER_NAME"].'/covid_watch/');
 
 session_start();
+
 if(!isset($_SESSION['is_loggin']) || empty($_SESSION['is_loggin'])) {
     header('Location: '.APP_PATH.'pages/login.php');
     die();
 }
 $curPage = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);  
 $page = explode(".",$curPage)[0];
+
 ?>
 
 <!DOCTYPE html>
