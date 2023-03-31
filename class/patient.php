@@ -18,7 +18,7 @@ class Patient {
     public $nationality;
     public $p_gender;
 
-    function __constructor($db) {
+    function __construct($db) {
         $this->conn = $db;
     }
 
@@ -29,4 +29,14 @@ class Patient {
     // Patient log count
 
     // Get all patient
+
+    // Get all data for dashboard
+    public function getdashboarddata() {
+        // mysqli_next_result($this->conn);;
+        $sql = "SELECT * FROM " . $this->table_name;
+
+        $result = $this->conn->query($sql);
+        $this->conn->close();
+        return $result;
+    }
 }
