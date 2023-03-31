@@ -62,4 +62,14 @@ class Patient {
         $this->conn->close();
         return $result;
     }
+    
+    // Get nationality
+    public function getnationality() {
+        // mysqli_next_result($this->conn);;
+        $sql = "SELECT * FROM nationality";
+
+        $result = $this->conn->query($sql);
+        $this->conn->close();
+        return $result;
+    }
 }

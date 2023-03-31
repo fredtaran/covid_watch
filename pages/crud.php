@@ -1,5 +1,5 @@
 <?php
-session_start();
+include_once '../header.php';
 
 // Generate CSRF Token
 $_SESSION['csrf_token'] = password_hash(random_bytes(60), PASSWORD_BCRYPT);
@@ -31,12 +31,16 @@ $_SESSION['csrf_token'] = password_hash(random_bytes(60), PASSWORD_BCRYPT);
                         </div>
 
                         <div class="form-group">
-                            <label for="gender">Gender <span class="text-danger">*</span></label>
-                            <select name="gender" id="gender" class="form-control" required>
-                                <option value="">---- Please select your gender -----</option>
-                                <option value="1">Male</option>
-                                <option value="0">Female</option>
-                            </select>
+                            <label for="diagnose">Gender <span class="text-danger">*</span></label>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" value="1" name="gender" id="genderm" required checked>
+                                <label for="genderm" class="form-check-label">Male</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" value="2" name="gender" id="genderf" required>
+                                <label for="genderf" class="form-check-label">Female</label>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -46,7 +50,7 @@ $_SESSION['csrf_token'] = password_hash(random_bytes(60), PASSWORD_BCRYPT);
 
                         <div class="form-group">
                             <label for="contact_no">Contact Number <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" pattern="\d*" name="contact_no" id="contact_no" required>
+                            <input type="text" class="form-control" pattern="\d*" name="contact_no" maxlength="11" id="contact_no" placeholder="Ex. 09123456789" required>
                         </div>
 
                         <div class="form-group">
@@ -63,7 +67,7 @@ $_SESSION['csrf_token'] = password_hash(random_bytes(60), PASSWORD_BCRYPT);
                                 </div>
 
                                 <div class="form-check">
-                                    <input type="radio" class="form-check-input" value="0" name="diagnose" id="diagnosed_no" required>
+                                    <input type="radio" class="form-check-input" value="0" name="diagnose" id="diagnosed_no" required checked>
                                     <label for="diagnosed_no" class="form-check-label">No</label>
                                 </div>
                             </div>
@@ -76,7 +80,7 @@ $_SESSION['csrf_token'] = password_hash(random_bytes(60), PASSWORD_BCRYPT);
                                 </div>
 
                                 <div class="form-check">
-                                    <input type="radio" class="form-check-input" value="0" name="encounter" id="encounter_no" required>
+                                    <input type="radio" class="form-check-input" value="0" name="encounter" id="encounter_no" required checked>
                                     <label for="encounter_no" class="form-check-label">No</label>
                                 </div>
                             </div>
@@ -84,7 +88,7 @@ $_SESSION['csrf_token'] = password_hash(random_bytes(60), PASSWORD_BCRYPT);
                             <div class="form-group col-md-4">
                                 <label for="vacinated">Vacinated <span class="text-danger">*</span></label>
                                 <div class="form-check">
-                                    <input type="radio" class="form-check-input" value="1" name="vacinated" id="vacinated_yes" required>
+                                    <input type="radio" class="form-check-input" value="1" name="vacinated" id="vacinated_yes" required checked>
                                     <label for="vacinated_yes" class="form-check-label">Yes</label>
                                 </div>
 
@@ -97,7 +101,9 @@ $_SESSION['csrf_token'] = password_hash(random_bytes(60), PASSWORD_BCRYPT);
 
                         <div class="form-group">
                             <label for="nationality">Nationality <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="nationality" id="nationality" required>
+                            <select class="form-control select2" id="nationality" name="nationality" style="width: 100%;">
+
+                            </select>
                         </div>
 
                         <div class="form-group">
@@ -110,47 +116,6 @@ $_SESSION['csrf_token'] = password_hash(random_bytes(60), PASSWORD_BCRYPT);
         </div>
     </div>
 </div>
-
-<script>
-    $(function() {
-        $("form").on("submit", function(event) {
-            event.preventDefault();
-            let formdata = $(this).serializeArray();
-
-            // Process form
-            // Add patient log
-            $.ajax({
-                method: "POST",
-                url: window.location.pathname + "api/add_record.php",
-                data: formdata,
-                success: function(result, textStatus, jqXHR) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Thank you for filling out the Health Declaration Form',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                    clearFields();
-                },
-                error: function(result, jqXHR, textStatus, errorThrown) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: "An unexpected error has been encountered",
-                        text: 'Please refresh the page and try again. Thank you.'
-                    })
-                }
-            })
-        })
-
-        function clearFields() {
-            $("input").each(function(i) {
-                if($(this).attr("name") != "csrf_token") {
-                    $(this).val("");
-                    $(this).prop('checked', false);
-                }
-            });
-
-            $("#gender").prop('selectedIndex', 0);
-        }
-    })
-</script>
+<?php 
+include_once '../footer.php';
+?>

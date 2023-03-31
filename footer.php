@@ -20,6 +20,8 @@
         </script>
         <!-- Bootstrap 4 -->
         <script src="<?php echo APP_PATH; ?>resources/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Select2 -->
+        <script src="<?php echo APP_PATH; ?>resources/plugins/select2/js/select2.full.min.js"></script>
         <!-- ChartJS -->
         <script src="<?php echo APP_PATH; ?>resources/plugins/chart.js/Chart.min.js"></script>
         <!-- Sparkline -->
@@ -45,19 +47,6 @@
         <!-- Custom Script -->
         <script src="<?php echo APP_PATH; ?>js/global.js"></script>
         <script src="<?php echo APP_PATH; ?>js/<?php echo $page; ?>.js"></script>
-
-        <?php
-        if(!isset($_SESSION['is_loggin']) || empty($_SESSION['is_loggin'])) {
-            echo "
-            <script>
-            $('.content-wrapper').load('./pages/crud.php');
-            $('#login').click(function () {
-                $('.content-wrapper').load('./pages/login.php');
-            });
-            </script>
-            ";
-        }
-        ?>
 
     </body>
 

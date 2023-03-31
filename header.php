@@ -34,6 +34,8 @@ $page = explode(".",$curPage)[0];
         <link rel="stylesheet" href="<?php echo APP_PATH; ?>resources/plugins/icheck-bootstrap/icheck-bootstrap.min.css" />
         <!-- JQVMap -->
         <link rel="stylesheet" href="<?php echo APP_PATH; ?>resources/plugins/jqvmap/jqvmap.min.css" />
+        <!-- Select2 -->
+        <link rel="stylesheet" href="<?php echo APP_PATH; ?>resources/plugins/select2/css/select2.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="<?php echo APP_PATH; ?>resources/css/adminlte.min.css" />
         <!-- overlayScrollbars -->
@@ -81,9 +83,9 @@ $page = explode(".",$curPage)[0];
                             </li>
 
                             <li class="nav-item">
-                                <a id="crudform" href="#" class="nav-link <?php echo ($page == 'crud'?'active':''); ?>">
+                                <a id="crudform" href="<?php echo APP_PATH; ?>pages/crud.php" class="nav-link <?php echo ($page == 'crud'?'active':''); ?>">
                                     <i class="nav-icon fas fa-edit"></i>
-                                    <p>CRUD Form</p>
+                                    <p>Form</p>
                                 </a>
                             </li>
 
