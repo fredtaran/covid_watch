@@ -10,13 +10,12 @@ class Login{
         $this->conn = $db;
     }
 
-    public function parseform(){
+    public function parseform(){        
         //check if username is present
-        mysqli_next_result($this->conn);;
         $sql = "SELECT * FROM " . $this->table_name . " WHERE username = '" . $this->uname."' LIMIT 1";
+        $result = $this->conn->query($sql);
+        $this->conn->close();
 
-        $result = mysqli_query($this->conn, $sql);
-        mysqli_close($this->conn);
         return $result;
         exit();
     }
