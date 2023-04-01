@@ -36,6 +36,9 @@ $page = explode(".",$curPage)[0];
         <link rel="stylesheet" href="<?php echo APP_PATH; ?>resources/plugins/jqvmap/jqvmap.min.css" />
         <!-- Select2 -->
         <link rel="stylesheet" href="<?php echo APP_PATH; ?>resources/plugins/select2/css/select2.min.css">
+        <!-- jsGrid -->
+        <link rel="stylesheet" href="<?php echo APP_PATH; ?>resources/plugins/jsgrid/jsgrid.min.css">
+        <link rel="stylesheet" href="<?php echo APP_PATH; ?>resources/plugins/jsgrid/jsgrid-theme.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="<?php echo APP_PATH; ?>resources/css/adminlte.min.css" />
         <!-- overlayScrollbars -->

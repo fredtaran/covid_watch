@@ -20,6 +20,8 @@
         </script>
         <!-- Bootstrap 4 -->
         <script src="<?php echo APP_PATH; ?>resources/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- jsGrid -->
+        <script src="<?php echo APP_PATH; ?>resources/plugins/jsgrid/jsgrid.min.js"></script>
         <!-- Select2 -->
         <script src="<?php echo APP_PATH; ?>resources/plugins/select2/js/select2.full.min.js"></script>
         <!-- ChartJS -->
