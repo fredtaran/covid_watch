@@ -175,6 +175,7 @@ function populateTable(){
             console.log(textStatus + ": " + jqXHR.status);
             console.log(result)
             var tr = '';
+            pdata = [];
             $.each(result.data,function(i,e){
                 pdata[i] = e;
                 tr += '<tr data-index="'+i+'">'+
