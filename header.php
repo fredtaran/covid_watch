@@ -85,7 +85,7 @@ $page = explode(".",$curPage)[0];
                             <li class="nav-item">
                                 <a id="crudform" href="<?php echo APP_PATH; ?>pages/crud.php" class="nav-link <?php echo ($page == 'crud'?'active':''); ?>">
                                     <i class="nav-icon fas fa-edit"></i>
-                                    <p>Form</p>
+                                    <p>Patient Log</p>
                                 </a>
                             </li>
 

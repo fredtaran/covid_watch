@@ -30,6 +30,7 @@ if($result->num_rows > 0){
         session_start();
         $_SESSION["is_loggin"] = true;
         $_SESSION["username"] = $item->uname;
+        $_SESSION['csrf_token'] = md5(uniqid(mt_rand(), true));
         http_response_code(200);
         echo json_encode("OK");
     }

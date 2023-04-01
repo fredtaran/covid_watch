@@ -17,6 +17,8 @@ class Patient {
     public $vacinated;
     public $nationality;
     public $p_gender;
+    public $pid;
+    public $action;
 
 
     public function __construct($db) {
@@ -25,7 +27,11 @@ class Patient {
 
     // Save patient log
     public function save_patient_log() {
-        $stmt = $this->conn->prepare("INSERT INTO " . $this->table_name . " (p_name, p_age, p_num, p_temp, diagnose, encounter, vacinated, nationality, p_gender) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $sql = ($this->action == 'add'?
+            "INSERT INTO " . $this->table_name . " (p_name, p_age, p_num, p_temp, diagnose, encounter, vacinated, nationality, p_gender) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)":
+            "UPDATE ".$this->table_name." SET p_name = ?, p_age = ?, p_num = ?, p_temp = ?, diagnose = ?, encounter = ?, vacinated = ?, nationality = ?, p_gender = ? WHERE id = ".$this->pid
+        );
+        $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("sisdiiisi", $this->p_name, $this->p_age, $this->p_num, $this->p_temp, $this->diagnose, $this->encounter, $this->vacinated, $this->nationality, $this->p_gender);
 
         // Sanitize input
@@ -48,7 +54,17 @@ class Patient {
         return false;
     }
     // Delete patient log
+    public function delete(){
+        $statement = $this->conn->prepare("DELETE FROM " . $this->table_name . " WHERE id = " . $this->pid);
 
+        if($statement->execute()){
+            $statement->close();
+            return true;
+        }
+
+        echo ("Error: " . $this->conn->error);
+        return false;
+    }
     // Patient log count
 
     // Get all patient
